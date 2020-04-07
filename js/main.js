@@ -42,7 +42,7 @@ $.ajax({
             data: {
                     labels: labelsMese,
                     datasets: [{
-                    label: 'Vendite totali',
+                    label: 'Vendite al mese',
                     backgroundColor: 'rgb(164 143 122)',
                     borderColor: 'black',
                     lineTension: 0,
