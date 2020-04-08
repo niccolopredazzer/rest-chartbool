@@ -45,7 +45,7 @@ $(document).ready(function () {
                     var salesmanSpecifico = data[i].salesman;
                     if (venditeCiascuno[salesmanSpecifico] === undefined) {
                         venditeCiascuno[salesmanSpecifico] = 0;
-                        
+
                     }
                     venditeCiascuno[salesmanSpecifico] += data[i].amount;
                 }
@@ -102,7 +102,5 @@ $(document).ready(function () {
                 }
         });
     }
-
-
 
 });
