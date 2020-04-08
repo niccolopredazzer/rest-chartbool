@@ -45,7 +45,7 @@ $(document).ready(function () {
                     var salesmanSpecifico = data[i].salesman;
                     if (venditeCiascuno[salesmanSpecifico] === undefined) {
                         venditeCiascuno[salesmanSpecifico] = 0;
-                        $('.slct-venditori').append('<option value="'+salesmanSpecifico+'">'+salesmanSpecifico+'</option>');
+                        
                     }
                     venditeCiascuno[salesmanSpecifico] += data[i].amount;
                 }
