@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    var labelsMese = [];
-    var valoriMese = [];
 
     $.ajax({
         url: 'http://157.230.17.132:4028/sales',
@@ -31,6 +29,8 @@ $(document).ready(function () {
                     }
                     oggettoMesi[dataMese] += risultato.amount;
                 }
+                var labelsMese = [];
+                var valoriMese = [];
                 for (var key in oggettoMesi) {
                         labelsMese.push(key);
                         valoriMese.push(oggettoMesi[key]);
