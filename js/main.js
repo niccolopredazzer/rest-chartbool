@@ -36,10 +36,41 @@ $(document).ready(function () {
                         valoriMese.push(oggettoMesi[key]);
                 }
                 creaGraficoLinea(labelsMese, valoriMese);
+
+
+                //grafico-pie//
+
+                var venditeCiascuno = {};
+                for (var i = 0; i < data.length; i++) {
+                    var salesmanSpecifico = data[i].salesman;
+                    if (venditeCiascuno[salesmanSpecifico] === undefined) {
+                        venditeCiascuno[salesmanSpecifico] = 0;
+                        $('.slct-venditori').append('<option value="'+salesmanSpecifico+'">'+salesmanSpecifico+'</option>');
+                    }
+                    venditeCiascuno[salesmanSpecifico] += data[i].amount;
+                }
+
+                var arrayVenditori = [];
+                var arrayVendite = [];
+                for (var key in venditeCiascuno) {
+                    arrayVenditori.push(key);
+                    arrayVendite.push(venditeCiascuno[key]);
+                }
+
+                creaGraficoPie (arrayVenditori, arrayVendite);
+            },
+            error: function () {
+                alert('errore');
             }
         });
 
+
+
     //funzioni//
+
+
+
+    //funzione grafico a linea//
     function creaGraficoLinea (labelsMese, valoriMese) {
         var ctx = $('#grafico');
         var chart = new Chart(ctx, {
@@ -56,5 +87,22 @@ $(document).ready(function () {
                 }
             });
     }
+    //funzione grafico a torta//
+    function creaGraficoPie (labelsVenditori, venditePerSalesman){
+        var ctx = $('#grafico-due');
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                    labels: labelsVenditori,
+                    datasets: [{
+                    label: 'Vendite Mensili',
+                    data: venditePerSalesman,
+                    backgroundColor: ['lightcoral', 'lightblue', 'lightgreen', 'lightyellow']
+                    }]
+                }
+        });
+    }
+
+
 
 });
