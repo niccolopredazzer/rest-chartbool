@@ -3,29 +3,36 @@ $(document).ready(function () {
     apiGet(); //richiamo la funzione apiGet prima di tutto così per fare apparire i grafici subito
 
     $('#send').click(function(){
-        var venditoreSelected = $('.seleziona-venditori').val();
-        var dataSelected = $('.input-data').val();
-        var aggiungiAmount = parseInt($('.input-vendite').val());
-        console.log(aggiungiAmount);
-        var dataPost = {
-            salesman: venditoreSelected,
-            amount: aggiungiAmount,
-            date: dataSelected
-        };
-        $.ajax({
-            url: baseUrl,
-            method: 'POST',
-            data: dataPost,
-            success: function (data) {
-                apiGet();
-            },
-            error: function () {
-                alert('error');
-            }
-        });
-        $('.seleziona-venditori').val('');
-        $('.input-data').val('');
-        $('.input-vendite').val('');
+        if ($('.seleziona-venditori').length && $('.input-data') && ('.input-vendite') != null) {
+            var venditoreSelected = $('.seleziona-venditori').val();
+            console.log(venditoreSelected);
+            var dataSelected = $('.input-data').val();
+            console.log(dataSelected);
+            var aggiungiAmount = parseInt($('.input-vendite').val());
+            console.log(aggiungiAmount);
+            var dataPost = {
+                salesman: venditoreSelected,
+                amount: aggiungiAmount,
+                date: dataSelected
+            };
+            $.ajax({
+                url: baseUrl,
+                method: 'POST',
+                data: dataPost,
+                success: function (data) {
+                    apiGet();
+                },
+                error: function () {
+                    alert('error');
+                }
+            });
+            $('.seleziona-venditori').val('');
+            $('.input-data').val('');
+            $('.input-vendite').val('');
+        }else {
+            alert('compila tutti i campi');
+        }
+
     });
     //delete//
     /*fetch(‘157.230.17.132:4028/sales/39', {
@@ -62,7 +69,7 @@ $(document).ready(function () {
                         if (oggettoMesi[dataMese] === undefined) {
                             oggettoMesi[dataMese] = 0;
                         }
-                        oggettoMesi[dataMese] += risultato.amount;
+                        oggettoMesi[dataMese] += parseInt(risultato.amount);
                     }
                     var labelsMese = [];
                     var valoriMese = [];
@@ -82,7 +89,7 @@ $(document).ready(function () {
                             venditeCiascuno[salesmanSpecifico] = 0;
 
                         }
-                        venditeCiascuno[salesmanSpecifico] += data[i].amount;
+                        venditeCiascuno[salesmanSpecifico] += parseInt(data[i].amount);
                     }
 
                     var arrayVenditori = [];

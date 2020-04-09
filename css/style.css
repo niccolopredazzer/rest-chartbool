@@ -32,6 +32,7 @@ select {
     padding: 10px 25px;
     border-radius: 10px;
     border: none;
+    background-color: grey;
 }
 
 input {
