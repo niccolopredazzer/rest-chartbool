@@ -4,16 +4,17 @@ $(document).ready(function () {
 
     $('#send').click(function(){
         var venditoreSelected = $('.seleziona-venditori').val();
-        console.log(venditoreSelected);
+        //console.log(venditoreSelected);
         var dataSelected = $('.input-data').val();
-        console.log(dataSelected);
+        var dataGiusta = moment(dataSelected, 'YYYY-MM-DD').format('DD-MM-YYYY')
+        //console.log(dataSelected);
         var aggiungiAmount = parseInt($('.input-vendite').val());
-        console.log(aggiungiAmount);
-            if ($('.seleziona-venditori').length && $('.input-data').length && ('.input-vendite').lenght > 0) {
+        //console.log(aggiungiAmount);
+            if (('.input-vendite').length > 0) {
             var dataPost = {
                 salesman: venditoreSelected,
                 amount: aggiungiAmount,
-                date: dataSelected
+                date: dataGiusta
             };
             $.ajax({
                 url: baseUrl,
@@ -35,6 +36,7 @@ $(document).ready(function () {
 
     });
     //delete//
+
     /*fetch(‘157.230.17.132:4028/sales/39', {
         method: ‘DELETE’
     })*/
