@@ -3,13 +3,13 @@ $(document).ready(function () {
     apiGet(); //richiamo la funzione apiGet prima di tutto così per fare apparire i grafici subito
 
     $('#send').click(function(){
-        if ($('.seleziona-venditori').length && $('.input-data') && ('.input-vendite') != null) {
-            var venditoreSelected = $('.seleziona-venditori').val();
-            console.log(venditoreSelected);
-            var dataSelected = $('.input-data').val();
-            console.log(dataSelected);
-            var aggiungiAmount = parseInt($('.input-vendite').val());
-            console.log(aggiungiAmount);
+        var venditoreSelected = $('.seleziona-venditori').val();
+        console.log(venditoreSelected);
+        var dataSelected = $('.input-data').val();
+        console.log(dataSelected);
+        var aggiungiAmount = parseInt($('.input-vendite').val());
+        console.log(aggiungiAmount);
+            if ($('.seleziona-venditori').length && $('.input-data').length && ('.input-vendite').lenght > 0) {
             var dataPost = {
                 salesman: venditoreSelected,
                 amount: aggiungiAmount,
