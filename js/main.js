@@ -11,15 +11,14 @@ $(document).ready(function () {
         var aggiungiAmount = parseInt($('.input-vendite').val());
         //console.log(aggiungiAmount);
             if (('.input-vendite').length > 0) {
-            var dataPost = {
-                salesman: venditoreSelected,
-                amount: aggiungiAmount,
-                date: dataGiusta
-            };
             $.ajax({
                 url: baseUrl,
                 method: 'POST',
-                data: dataPost,
+                data: {
+                    salesman: venditoreSelected,
+                    amount: aggiungiAmount,
+                    date: dataGiusta
+                },
                 success: function (data) {
                     apiGet();
                 },
